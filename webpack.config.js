@@ -62,7 +62,10 @@ module.exports = function(env) {
 			})
 		],
 		devServer:{
-			stats:"errors-only"
+			stats:"errors-only",
+			proxy: {
+				"/server": "http://localhost:9080"
+			},
 		}
 	};
 

@@ -1,5 +1,6 @@
 import "./styles/app.css";
 import {JetApp, HashRouter, plugins } from "webix-jet";
+import session from "models/session";
 
 export default class MyApp extends JetApp{
 	constructor(config){
@@ -50,7 +51,9 @@ export default class MyApp extends JetApp{
 		if (cookies)
 			localeConfig.storage = webix.storage.local;
 
-		this.use(plugins.Locale,localeConfig);
+		this.use(plugins.Locale, localeConfig);
+
+		this.use( plugins.User, { model : session });
 
 		webix.event(window, "resize", () => {
 			const newSize = size();
